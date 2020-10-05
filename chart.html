@@ -7,11 +7,11 @@
                 new Chart(document.getElementById("{{ foo.chart_id }}"), {
                     type: 'line',
                     data: {
-                        labels: {{ foo.labels | safe }} ,
+                        labels: {{ foo.labels | safe }} , {#labels of the graph as the type of list or array#}
                         datasets: [{
-                            data: {{ foo.values | safe }} ,
+                            data: {{ foo.values | safe }} , {#same as labels, your data must be a type of list or array #}
                             label: "{{ foo.chart_legend | safe}}",
-                            borderColor: "{{ foo.chart_color }}",
+                            borderColor: "{{ foo.chart_color }}", {# you can either pass the color or set it to a static value #}
                             fill: false
                         },
                         ]
@@ -19,7 +19,7 @@
                     options: {
                         title: {
                             display: true,
-                            text: '{{ foo.chart_title }}',
+                            text: '{{ foo.chart_title }}', {# title of the chart can be passed or set statically #}
                             responsive: true
                         }
                     }
