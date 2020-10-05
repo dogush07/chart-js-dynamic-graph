@@ -1,0 +1,30 @@
+<div class="container m-5">
+    <div class="row">
+        <div class="col">
+            <canvas id="{{ foo.chart_id }}" width="auto" height="auto"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+            <script>
+                new Chart(document.getElementById("{{ foo.chart_id }}"), {
+                    type: 'line',
+                    data: {
+                        labels: {{ foo.labels | safe }} ,
+                        datasets: [{
+                            data: {{ foo.values | safe }} ,
+                            label: "{{ foo.chart_legend | safe}}",
+                            borderColor: "{{ foo.chart_color }}",
+                            fill: false
+                        },
+                        ]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: '{{ foo.chart_title }}',
+                            responsive: true
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</div>
